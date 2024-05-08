@@ -4,8 +4,9 @@ import * as dotenv from "dotenv";
 import { Request, Response } from "express";
 import { userRouter } from "./routers/user.routes";
 import { movieRouter } from "./routers/movie.routes";
-import "reflect-metadata";
 import { errorHandler } from "./middlewares/error.middleware"
+import "reflect-metadata";
+
 dotenv.config();
 
 const app = express();
