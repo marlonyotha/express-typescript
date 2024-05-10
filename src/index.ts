@@ -11,8 +11,9 @@ app.use(express.json());
 app.use(morgan("tiny"));
 app.use(express.static("public"));
 app.use(Router);
+
 app.use(
-    "/docs",
+    "/swagger",
     swaggerUi.serve,
     swaggerUi.setup(undefined, {
         swaggerOptions: {
@@ -22,12 +23,7 @@ app.use(
 );
 
 
-app.get("/ping", async (_req, res) => {
-    res.send({
-        message: "hello",
-    });
-});
 
 app.listen(PORT, () => {
-    console.log("Server is running on port", PORT);
+    console.log("Server is running on port", PORT, "httP://localhost:" + PORT + "/swagger");
 });
