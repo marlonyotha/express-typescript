@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm"
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, ManyToMany } from "typeorm"
+import { Author } from "./Author"
+import { Album } from "./Album"
 
 @Entity()
 export class Photo {
@@ -21,4 +23,10 @@ export class Photo {
 
     @Column()
     isPublished: boolean
+
+    @ManyToOne(() => Author, (author) => author.photos)
+    author: Author
+
+    @ManyToMany(() => Album, (album) => album.photos)
+    albums: Album[]
 }

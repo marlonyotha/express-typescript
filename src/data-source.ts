@@ -1,5 +1,8 @@
 import { DataSource } from "typeorm"
 import { Photo } from "./model/Photo"
+import { PhotoMetadata } from "./model/PhotoMetadata"
+import { Author } from "./model/Author"
+import { Album } from "./model/Album"
 
 export const PostgresDataSource = new DataSource({
     type: "postgres",
@@ -10,6 +13,6 @@ export const PostgresDataSource = new DataSource({
     database: "express-typescript",
     synchronize: true,
     logging: true,
-    entities: [Photo],
+    entities: [Photo, PhotoMetadata, Author, Album],
     migrations: [],
 })
