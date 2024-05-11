@@ -2,6 +2,8 @@ import express, { Application } from "express";
 import morgan from "morgan";
 import Router from "./routes";
 import swaggerUi from "swagger-ui-express";
+import { PostgresDataSource } from "./data-source";
+import { Console } from "console";
 
 const PORT = process.env.PORT || 8000;
 
@@ -22,7 +24,11 @@ app.use(
     })
 );
 
-
+PostgresDataSource.initialize()
+    .then(() => {
+        console.log("DataSource initialized");
+    })
+    .catch((error) => console.log(error))
 
 app.listen(PORT, () => {
     console.log("Server is running on port", PORT, "httP://localhost:" + PORT + "/swagger");
