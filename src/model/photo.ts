@@ -10,13 +10,13 @@ export class Photo {
     })
     name: string
 
-    @Column("text")
+    @Column()
     description: string
 
     @Column()
     filename: string
 
-    @Column("double")
+    @Column()
     views: number
 
     @Column()
